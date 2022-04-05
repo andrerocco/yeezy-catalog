@@ -12,7 +12,11 @@ table.addEventListener('mouseover', function injectExampleText(){
     document.querySelector('#table-top th').innerHTML = "Example subject:"
     document.querySelector('#table-bottom th').innerHTML = "Example body:"
 
+
     table.addEventListener('click', function(){
+        
+        navigator.clipboard.writeText(clipboardText);
+
         document.querySelector('#table-bottom td').innerHTML = `
         Instagram: @romeriocastro
         <br>Yeezy: Yeezy 700 v2
@@ -38,3 +42,8 @@ table.addEventListener('mouseout', function cleanExampleText(){
 })
 
 
+const clipboardText = `Outfit submission - Your name 
+
+Instagram: @username 
+Yeezy: 
+Colorway: `;
