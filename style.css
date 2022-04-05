@@ -46,7 +46,7 @@ section {
 }
 
 
-#home_page_title {
+.page-title {
     font-weight: bold;
     font-size: 64px;
     line-height: 62px;
@@ -58,7 +58,7 @@ section {
     margin-left: 7.4vw;
 }
 
-#home_models_list {
+#home-models-list {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -69,13 +69,13 @@ section {
     font-style: normal;
     font-weight: bold;
     font-size: 21px;
-    line-height: 38px;
     color: var(--color-primary);
 
     margin: 0px;
     padding: 0px;
     padding-top: 9.4vh;
     margin-left: 11vw;}
+#home-models-list li {margin-bottom: 15px;}
 
 #description {
     color: var(--color-primary);
@@ -96,3 +96,80 @@ a:hover {
     text-decoration-thickness: 1px;
     text-underline-offset: 1px;
 }
+
+
+/* ------ EXCLUSIVOS submit.html ------ */
+
+
+#go-back a {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    padding: 0px 3px;
+
+    transition: linear .15s;
+}
+#go-back a:hover {
+    color: white;
+    background-color: black;
+    text-decoration: underline;
+    text-decoration-thickness: 4px;
+    text-underline-offset: 1px;
+}
+#go-back a:hover svg {
+    stroke: white;
+}
+#go-back a svg {
+    position: relative;
+    stroke: var(--color-header);
+}
+#go-back a h1 {
+    font-size: 64px;
+    margin-left: 18px;
+}
+
+.submit {
+    width: 100%;
+    padding-left: 13vw;
+    margin-top: 80px;
+
+    font-size: 24px;
+    color: var(--color-primary);
+}
+.submit ol {
+    margin-left: 3vw;
+    margin-top: 8px;
+}
+.submit ol li {
+    margin-bottom: 3px;
+    font-size: 19px;
+}
+
+/* TABELA SUBMIT> */
+.table-container { margin: 26px 13vw 0 13vw; }
+table {
+    width: 100%;
+    border: 3px solid black;
+    border-collapse: collapse;
+    font-size: 21px;
+}
+table td, 
+table th {
+    border: 3px solid #0C0C0B;
+    padding: 6px 15px;
+    background: white;
+    color: #0C0C0B;
+    vertical-align: top;
+}
+table th {
+    text-align: right;
+    width: 200px;
+}
+table:hover th,
+table:hover td {
+    border: 3px solid white;
+    background: rgba(0, 0, 0, 0.95);
+    color: white;
+}
+/* <TABELA SUBMIT */
+
