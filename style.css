@@ -1,0 +1,98 @@
+@font-face {
+    font-family: 'YeezyzTStar';
+    src: url('fonts/yeezy_tstar-bold-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;}
+:root {
+    --color-header: #2E3238;
+    --color-primary: #404346;
+    --color-secundary: #56585a;
+    --color-terciary: #67696b;}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: YeezyzTStar;
+}
+*::-webkit-scrollbar {
+    width: 11px;
+}
+*::-webkit-scrollbar-track {
+    background: #f3f3f300;
+}
+*::-webkit-scrollbar-thumb {
+    background-color: #a0a0a0;
+    border-radius: 0px;
+}
+
+
+body {background-color: #eeeee3; font-family: YeezyzTStar, Helvetica;}
+a {text-decoration: none; color: inherit;}
+ul {list-style-type: none;}
+
+
+section {
+    position: relative;
+    width: 100%;
+}
+
+.yeezy-menu {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 10px;
+    width: 100%;
+    height: 107vh; /* Muda a altura em que o sticky termina */
+    display: flex;
+}
+
+
+#home_page_title {
+    font-weight: bold;
+    font-size: 64px;
+    line-height: 62px;
+    color: var(--color-header);
+    
+    margin: 0px;
+    padding: 0px;
+    padding-top: 15vh;
+    margin-left: 7.4vw;
+}
+
+#home_models_list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    list-style-type: none;
+
+    /*FONTE*/
+    font-style: normal;
+    font-weight: bold;
+    font-size: 21px;
+    line-height: 38px;
+    color: var(--color-primary);
+
+    margin: 0px;
+    padding: 0px;
+    padding-top: 9.4vh;
+    margin-left: 11vw;}
+
+#description {
+    color: var(--color-primary);
+    font-size: 18px;
+    margin-left: 5vw;
+    margin-bottom: 5vh;
+    margin-top: 1000px;
+}
+
+a {
+    padding: 0px 2px;
+    transition: linear .1s;
+}
+a:hover {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.9);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 1px;
+}
