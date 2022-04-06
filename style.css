@@ -24,6 +24,14 @@
     background-color: #a0a0a0;
     border-radius: 0px;
 }
+::-moz-selection { /* Firefox */
+    color: white;
+    background: yellow;
+}
+::selection {
+    color: rgb(0, 0, 0);
+    background: #c9b751;
+}
 
 
 body {background-color: #efefe4; font-family: YeezyzTStar, Helvetica;}
