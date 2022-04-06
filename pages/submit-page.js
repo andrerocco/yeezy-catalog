@@ -38,7 +38,7 @@ table.addEventListener('mouseout', function cleanExampleText(){
     <br>If the image is not posted on instagram, include the image in the email.
     `;
     document.querySelector('#table-top th').innerHTML = "Subject:"
-    document.querySelector('#table-bottom th').innerHTML = "In the body<br>of the email:"
+    document.querySelector('#table-bottom th').innerHTML = "The body of the email:"
 })
 
 

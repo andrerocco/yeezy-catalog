@@ -105,7 +105,7 @@ a:hover {
     display: flex;
     align-items: center;
     width: fit-content;
-    padding: 0px 3px;
+    padding: 4px 3px;
 
     transition: linear .15s;
 }
@@ -114,7 +114,7 @@ a:hover {
     background-color: black;
     text-decoration: underline;
     text-decoration-thickness: 4px;
-    text-underline-offset: 1px;
+    text-underline-offset: 3px;
 }
 #go-back a:hover svg {
     stroke: white;
@@ -131,10 +131,10 @@ a:hover {
 .submit {
     width: 100%;
     padding-left: 13vw;
-    margin-top: 80px;
+    margin-top: 70px;
 
-    font-size: 24px;
-    color: var(--color-primary);
+    font-size: 22px;
+    color: var(--color-secundary);
 }
 .submit ol {
     margin-left: 3vw;
@@ -144,9 +144,10 @@ a:hover {
     margin-bottom: 3px;
     font-size: 19px;
 }
+#email-underline {text-decoration: underline;}
 
 /* TABELA SUBMIT> */
-.table-container { margin: 26px 13vw 0 13vw; }
+.table-container { margin: 45px 13vw 5vw;}
 table {
     width: 100%;
     border: 3px solid black;
@@ -165,11 +166,230 @@ table th {
     text-align: right;
     width: 200px;
 }
-table:hover th,
-table:hover td {
+.table-container:hover table th,
+.table-container:hover table td {
     border: 3px solid white;
     background: rgba(0, 0, 0, 0.95);
     color: white;
 }
 /* <TABELA SUBMIT */
 
+
+
+/* Fazer os max heigth pra definir o top do sticky <-------------- */
+
+
+
+/* MEDIA QUERIES> */
+
+@media screen and (max-width: 480px) /* Mobile devices */ {
+    .page-title {
+        font-size: 50px;
+        line-height: 50px;
+        margin: 0 6vw;
+        padding-top: 90px;
+    }
+    #home-page-title br {display: none;}
+    #home-models-list {
+        padding-top: 70px;
+        margin-left: 30px;
+    }
+    #home-models-list li {margin-bottom: 15px;}
+    #description {
+        font-size: 16px;
+        margin: 600px 3vw 30px;
+    }
+    #description-h3-br {display: none;}
+    /* --- SUBMIT PAGE --- */
+    #go-back {
+        width: auto;
+        padding: 20px 8px 0;
+        margin: 0;
+        /* Tornar não seleceionável */
+        -webkit-user-select: none; /* Safari */        
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* IE10+/Edge */
+        user-select: none; /* Standard */
+    }
+    #go-back a {
+        display: block; /* remove o display flex usado para a icone .svg */
+        padding: 3px 5px;
+    } 
+    #go-back a:hover {
+        text-decoration: none;
+        color: inherit;
+        background-color: inherit;
+    }
+    #go-back a h1 {
+        font-size: 50px;
+        margin-left: 0px;
+    }
+    #go-back a svg {
+        position: relative;
+        transform: scale(0.9);
+        margin-bottom: 20px; /* distância da seta para o texto do header */
+        margin-left: 10px;
+    }
+    #go-back a:hover svg {stroke: var(--color-header);}
+
+    .submit {
+        width: 100vw;
+        padding: 0 3.4vw;
+        margin-top: 60px;
+        font-size: 16px;
+        line-height: 18px;
+        color: var(--color-secundary);
+    }
+    .submit-p-text {margin-top: 2px;}
+    .submit ol {margin-left: 20px; margin-right: 8px;}
+    .submit ol li {font-size: 16px;}
+
+    .table-container {
+        height: 280px;
+        width: auto;
+        margin: 32px 3vw 0 3vw;
+    }
+    table {
+        font-size: 14px;
+    }
+    table td, 
+    table th {padding: 3px 8px;}
+    table th {width: 20px;}}
+@media screen and (min-width: 481px) and (max-width: 735px) /* iPads, Tablets */ {
+    .page-title {
+        font-size: 55px;
+        line-height: 50px;
+        margin: 0 6vw;
+        padding-top: 90px;
+    }
+    #home-page-title br {display: none;}
+    #home-models-list {
+        padding-top: 70px;
+        margin-left: 14vw;
+    }
+    #home-models-list li {margin-bottom: 15px;}
+    #description {
+        font-size: 16px;
+        margin: 800px 2.5vw 6vw;
+    }
+    #description-h3-br {display: none;}
+    /* --- SUBMIT PAGE --- */
+    #go-back {
+        width: auto;
+        padding: 28px 3vw 0;
+        margin: 0;
+        /* Tornar não seleceionável */
+        -webkit-user-select: none; /* Safari */        
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* IE10+/Edge */
+        user-select: none; /* Standard */
+    }
+    #go-back a {
+        display: block; 
+        padding: 3px 5px;
+    } 
+    #go-back a:hover {
+        text-decoration: none;
+        color: inherit;
+        background-color: inherit;
+    }
+    #go-back a h1 {
+        font-size: 55px;
+        margin-left: 0px;
+    }
+    #go-back a svg {
+        position: relative;
+        margin-bottom: 30px; /* muda a distância entre a seta e o texto do header */
+        margin-left: 10px;
+    }
+    #go-back a:hover svg {stroke: var(--color-header);}
+
+    .submit {
+        width: 100vw;
+        padding: 0 3.4vw;
+        margin-top: 60px;
+        font-size: 20px;
+        line-height: 22px;
+    }
+    .submit-p-text {margin-top: 2px;}
+    .submit ol {margin-left: 20px; margin-right: 8px;}
+    .submit ol li {font-size: 20px;}
+
+    .table-container {
+        height: 280px;
+        width: auto;
+        margin: 50px 3vw 0 3vw;
+    }
+    table {
+        font-size: 20px;
+    }
+    table td, 
+    table th {padding: 3px 8px;}
+    table th {width: 40px;}}
+@media screen and (min-width: 736px) and (max-width: 1230px) /*  Small screens, laptops */ {
+    #home-models-list {
+        padding-top: 70px;
+        margin-left: 14vw;
+    }
+    #description {
+        margin: 800px 2vw 4vw;
+    }
+    #description-h3-br {display: none;}
+    /* --- SUBMIT PAGE --- */
+    #go-back {
+        padding: 50px 2vw 0;
+        margin: 0;
+        /* Tornar não seleceionável */
+        -webkit-user-select: none; /* Safari */        
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* IE10+/Edge */
+        user-select: none; /* Standard */
+    }
+    #go-back a h1 {font-size: 55px; line-height: 60px; margin-left: 1.6vw;}
+    #go-back a svg {transform: scale(0.9);}
+    #go-back a:hover {
+        color: white;
+        background-color: black;
+        text-decoration: underline;
+        text-decoration-thickness: 3px;
+        text-underline-offset: 4px;
+    }
+
+    .submit {
+        width: 100vw;
+        padding: 0 6vw;
+        margin-top: 60px;
+        font-size: 20px;
+        line-height: 22px;
+    }
+    .submit-p-text {margin-top: 2px;}
+    .submit ol {margin-left: 20px; margin-right: 8px;}
+    .submit ol li {font-size: 20px;}
+
+    .table-container {
+        height: 240px;
+        width: auto;
+        margin: 50px 6vw 0 6vw;
+    }
+    table {
+        font-size: 20px;
+    }
+    table td, 
+    table th {padding: 3px 8px;}
+    table th {width: 180px;}}
+
+/* @media screen and (min-width: 2000px) Extra large screens, TV {
+    
+} */
+
+/* altura das telas */
+@media screen and (max-height: 400px) {.yeezy-menu {top: -500px; height: 1000px;}}
+@media screen and (min-height: 401px) and (max-height: 600px) {.yeezy-menu {top: -54vh; height: 205vh;}}
+@media screen and (min-height: 601px) and (max-height: 700px) {.yeezy-menu {top: -30vh; height: 168vh;}}
+@media screen and (min-height: 701px) and (max-height: 750px) {.yeezy-menu {top: -20vh; height: 148vh;}}
+@media screen and (min-height: 751px) and (max-height: 850px) {.yeezy-menu {top: -15vh; height: 136vh;}}
+@media screen and (min-height: 851px) and (max-height: 1000px) {.yeezy-menu {top: 0; height: 1050px;}}
+@media screen and (min-height: 1001px) and (max-height: 1300px) {.yeezy-menu {top: 40px; height: 1000px;}}
+@media screen and (min-height: 1301px) {.yeezy-menu {top: 70px; height: 1000px;}}
+
+/* <MEDIA QUERIES */
