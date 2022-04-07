@@ -287,6 +287,7 @@ nav {
         margin-left: 4px;
         margin-right: 4px;
     }
+    #go-back { position: fixed; z-index: 1000; }
     #go-back a h1 span { display: inherit; margin-left: 6px; }
     #go-back a h1 { font-size: 20px; margin-left: 2px; }
     #go-back a svg { transform: scale(0.4); margin-top: 1px; }
@@ -329,8 +330,7 @@ nav {
         height: auto;
         width: 95vw;
         height: calc(95vw/500*625);
-    }    
-}
+    }}
 @media screen and (min-width: 521px) and (max-width: 1100px) {
     /* NAV> */
     nav {
@@ -347,9 +347,10 @@ nav {
 
     /* NAV TOP> */
     #nav-top {
-        margin-top: 10px;
+        margin-top: 8px;
         margin-left: 4px;
     }
+    #go-back { position: fixed; z-index: 1000; }
     #go-back a h1 span { display: inherit; margin-left: 6px; }
     #go-back a h1 { font-size: 20px; margin-left: 2px; }
     #go-back a svg { transform: scale(0.4); margin-top: 1px; }
