@@ -86,7 +86,7 @@ fetch("foam-runner-data.json")
             let listLength = document.getElementsByTagName("li").length; /* listLength é o número de elementos 'li' da 'ul .colorways'. Como é usado nas duas condições 'if', fica fora; */
             function removeSelecetedClass() {
                 for(let i = 0; i < listLength; i++){
-                    document.querySelectorAll("#list .colorways li a")[i].classList.remove("selected-item");
+                    document.querySelectorAll(".colorways li a")[i].classList.remove("selected-item");
                 }; /* O for loop remove a classe de todos os elementos 'a' da ul .colorways */ 
             }
 
@@ -124,41 +124,73 @@ fetch("foam-runner-data.json")
             let shuffledArrayOfNumbers = shuffle(orderedArray) /* shuffledArray é a orderedArray com seus elementos em ordem aleatória */
             /* <GERADOR DE ORDEM ALEATÓRIA */
 
+            postsInjector()
 
-            for(let i = 0; i < postAmount; i++){
-                let z = shuffledArrayOfNumbers[i]
+            function postsInjector(){
+                for(let i = 0; i < postAmount; i++){
+                    let z = shuffledArrayOfNumbers[i]
+    
+                    postSection = document.querySelector("#container #posts")
+    
+                    postFrame = document.createElement("div")
+                    postFrame.setAttribute("class", "catalog-post-frame")
+                    let idNumber = i + 1
+                    postFrame.setAttribute("id", `img${idNumber.toString().padStart(5, '0')}`);
+                    /* Define e classe e o id da div frame como: <div class="catalog-post-frame" id="img0001"></div> */
 
-                postSection = document.querySelector("#container #posts")
+                    postInformation = document.createElement("div")
+                    postInformation.setAttribute("class", "catalog-post-information");
+                    
+                    instagramUsername = posts[z]["username"]
+                    instagramLink = `https://www.instagram.com/${instagramUsername}/`
+                    /* Gera o link para a conta do usuário do post */
+                    postUsername = document.createElement("p")
+                    aElement = document.createElement("a")
+                    aElement.setAttribute("href", instagramLink)
+                    aElement.setAttribute("target", "_blank")
+                    aElement.innerHTML = `@${instagramUsername.toUpperCase()}`;
+                    postUsername.appendChild(aElement);
+                    /* Gera o elemento <p><a></a>@USUÁRIO</p> clicável que abre o link para a conta do usuário do post */  
 
-                aElement = document.createElement("a")
-                instagramUsername = posts[z]["username"]
-                instagramLink = `https://www.instagram.com/${instagramUsername}/`
-                /* Gera o link para a conta do usuário do post */
-                aElement.setAttribute("href", instagramLink)
-                aElement.setAttribute("target", "_blank")
-                /* Gera o elemento <a> clicável que abre o link para a conta do usuário do post */   
+                    shoeModel = posts[z]["model"].replace(/-/g, " ").replace("yeezy", "").replace(" ", "");
+                    shoeColorway = posts[z]["colorway"].replace(/-/g, " ");
+                    postModel = document.createElement("p");
+                    postModel.innerHTML = ` ${shoeColorway.toUpperCase()} / ${shoeModel.toUpperCase()}`;
+                    /* Gera o elemento <p> com a COLORWAY / MODELO dentro */
+                    
+                    postInformation.appendChild(postUsername)
+                    postInformation.appendChild(postModel)
+                    postFrame.appendChild(postInformation)
+                     
+    
+                    imgDivElement = document.createElement("div")
+                    imgDivElement.setAttribute("class", "catalog-img");
+                    imageElement = document.createElement("img");
+                    imageSource = posts[z]["imageurl"]
+                    imageElement.setAttribute("src", imageSource)
+                    /* Cria um elemento <img> e coloca a informação do objeto .JSON como src="link" da <img> */
 
-                divElement = document.createElement("div")
-                divElement.setAttribute("class", "catalog-img");
-                let idNumber = i + 1 /* <-------- */
-                divElement.setAttribute("id", `img${idNumber.toString().padStart(4, '0')}`);
-                /* Gera a div para o post com classe e id definidos "<div class="catalog-img" id="img0001"></div>" */
-
-                imageElement = document.createElement("img");
-                imageSource = posts[z]["imageurl"]
-                imageElement.setAttribute("src", imageSource)
-                /* Cria um elemento <img> e coloca a informação do objeto .JSON como src="link" da <img> */
-
-                divElement.appendChild(imageElement);
-                /* Acrescenta <img> dentro da <div> criada antes */
-                aElement.appendChild(divElement);
-                /* Acrescenta <div><img></div> dentro de <a> criado antes */
-
-                postSection.appendChild(aElement);
-                /* Adiciona o elemento final gerado na section para os posts da página */
-            }
+                    imgDivElement.appendChild(imageElement);
+                    /* Acrescenta <img> dentro da <div class="catalog-img"> criada */
+                    
+                    postFrame.appendChild(imgDivElement)
+    
+                    postSection.appendChild(postFrame);
+                    /* Adiciona o elemento final gerado na section para os posts da página */
+                }
+            };
         }/* <FUNÇÃO CARREGADORA DOS POSTS */
 
         postsLoader(data) /* Inicialmente a pagina carrega com a função postsLoader recebendo a array "data" que contém todos os posts */
+
     })
-    
+
+
+listHeight = document.querySelector('.colorways').offsetHeight;
+wrapHeight = document.querySelector('#nav-list-wrap').offsetHeight
+if (wrapHeight > listHeight || screen.width <= 1100) {
+    document.querySelector('#gradient').style.display = 'none';
+} else {
+    navListHeight = document.querySelector('#nav-list-wrap').offsetHeight;
+    document.querySelector('#gradient').style.height = navListHeight + 'px';
+}
