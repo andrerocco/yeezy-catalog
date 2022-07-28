@@ -295,6 +295,7 @@ nav {
     #go-back a h1 span { display: inherit; margin-left: 6px; }
     #go-back a h1 { font-size: 20px; margin-left: 2px; }
     #go-back a svg { transform: scale(0.4); margin-top: 1px; }
+    #go-back a:hover { text-decoration: underline; text-decoration-thickness: 2px; }
     #nav-model-title { display: none; }
 
     /* NAV GIF> */
@@ -371,6 +372,7 @@ nav {
     #go-back a h1 span { display: inherit; margin-left: 6px; }
     #go-back a h1 { font-size: 20px; margin-left: 2px; }
     #go-back a svg { transform: scale(0.4); margin-top: 1px; }
+    #go-back a:hover { text-decoration: underline; text-decoration-thickness: 2px; }
     #nav-model-title { display: none; }
 
     /* NAV GIF> */
