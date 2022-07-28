@@ -5,13 +5,13 @@ Acesse o website em progresso em [Yeezy Catalog em GitHub Pages](https://andrero
 
 _Desenvolvido por [André Rocco](https://www.instagram.com/andre___rocco/) e criado por [Romério Castro](https://www.instagram.com/romeriocastro/)._
 
-### Como funciona?
 
-A página inical do catálogo mostra todos os modelos de _Yeezy's_ que podem ser explorados. Ao clicar em um modelo, o usuário acessa a página de posts daquele modelo.
 
-As imagens usadas nos posts e suas respectivas informações são armazenadas em arquivos JSON seguindo o seguinte formato:
+## Como funciona?
 
-```json
+A página inical do catálogo mostra todos os modelos de _Yeezy's_ que podem ser explorados. Ao clicar em um modelo, o usuário acessa a página de posts daquele modelo. As imagens usadas nos posts e suas respectivas informações são armazenadas em arquivos JSON seguindo o seguinte formato:
+
+```js
 {
   "imageurl": "https://i.ibb.co/abc123/exemplo.jpg", // Link da foto hospedada em imgbb.com
   "model": "yeezy-foam-runner", // Modelo utilizado na foto
@@ -23,7 +23,9 @@ As imagens usadas nos posts e suas respectivas informações são armazenadas em
 
 Quando uma página de posts (local onde é possível visualizar as imagens) é acessada, o banco de imagens e todas as imagens do banco de dados são ordenadas em ordem aleatória. O usuário pode filtrar as imagens que deseja ver baseado na característica _colorway_.
 
+
 -----
+
 
 # Yeezy Catalog Website (English)
 
@@ -32,13 +34,13 @@ Access the website in progress at [Yeezy Catalog in GitHub Pages](https://andrer
 
 _Developed by [André Rocco](https://www.instagram.com/andre___rocco/) and created by [Romério Castro](https://www.instagram.com/romeriocastro/)._
 
-### How it works?
 
-The catalog home page shows all _Yeezy's_ shoes models that can be viewed. By selecting one, the user accesses the respective posts page for that shoe.
 
-The images used in the posts and their respective information are stored in JSON files that follows this format:
+## How it works?
 
-```json
+The catalog home page shows all _Yeezy's_ shoes models that can be viewed. By selecting one, the user accesses the respective posts page for that shoe. The images used in the posts and their respective information are stored in JSON files that follows this format:
+
+```js
 {
   "imageurl": "https://i.ibb.co/abc123/exemplo.jpg", // Hosted image's URL (hosted in imgbb.com)
   "model": "yeezy-foam-runner", // Model used in the photo
