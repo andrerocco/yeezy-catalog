@@ -268,6 +268,10 @@ nav {
 
 /* MEDIA QUERIES> */
 @media screen and (max-width: 520px) {
+    main {
+        width: 100vw;
+    }
+
     /* NAV> */
     nav {
         position: relative;
@@ -330,6 +334,19 @@ nav {
         height: auto;
         width: 95vw;
         height: calc(95vw/500*625);
+    }
+
+    /* NO OUTFITS MESSAGE> */
+    #no-outfits {
+        width: 75%;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+
+        padding-top: 50px;
+        padding-bottom: 50px;
+        padding-left: 0; /* Espaçamento para o nav */
+        padding-right: 0;
     }}
 @media screen and (min-width: 521px) and (max-width: 1100px) {
     /* NAV> */
@@ -388,6 +405,19 @@ nav {
 
         grid-template-columns: min-content;
         gap: 25px 0;
+    }
+
+    /* NO OUTFITS MESSAGE> */
+    #no-outfits {
+        width: 75%;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+
+        padding-top: 50px;
+        padding-bottom: 50px;
+        padding-left: 0; /* Espaçamento para o nav */
+        padding-right: 0;
     }}
 @media screen and (min-width: 1101px) and (max-width: 1650px) {
     nav {width: 560px}
