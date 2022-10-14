@@ -4,7 +4,7 @@ fetch("foam-runner-data.json")
         class Feed {
             constructor(data) {
                 this.data = data;
-                this.selectedFilter = undefined;
+                this.selectedFilterString = undefined;
                 this.shuffledPosts = this.shuffle(data);
                 this.postAmount = data.length;
                 this.gifElement = document.querySelector("#bottom-gif img")
@@ -102,19 +102,19 @@ fetch("foam-runner-data.json")
               
                 return array;
             }
-
-            updateGif(colorway = undefined) {
-                if (this.colorwayIDs.includes(colorway)) {
-                    this.gif.removeAttribute("src")
-                    this.gif.setAttribute("src", `../gifs/yeezy-foam-runner-${colorway}.gif`)
+            
+            // Atualiza os GIFs dos tênis
+            updateGif() {
+                if (this.colorwayIDs.includes(this.selectedFilterString)) {
+                    this.gifElement.removeAttribute("src")
+                    this.gifElement.setAttribute("src", `../gifs/yeezy-foam-runner-${this.selectedFilterString}.gif`)
                 } else {
-                    this.gif.removeAttribute("src")
-                    this.gif.setAttribute("src", `../gifs/all-foam-runner.gif`)
+                    this.gifElement.removeAttribute("src")
+                    this.gifElement.setAttribute("src", `../gifs/all-foam-runner.gif`)
                 }
             }
 
-            // Filtra os posts de acordo com o filtro selecionado
-            // Se não receber nenhum argumento, irá limpar o estilo do filtro clicado
+            // Atualiza o estilo dos botões de filtro
             updateSelectedFilter(clear = true) {
                 if (clear) { // Limpa todos os filtros
                     this.filterButtons.forEach((button) => {
@@ -123,24 +123,27 @@ fetch("foam-runner-data.json")
                     })
                 }
 
-                if (this.selectedFilter != undefined) { // Se algum filtro estiver selecionado
-                    console.log(this.selectedFilter)
+                if (this.selectedFilterString != undefined) { // Se algum filtro estiver selecionado
+                    console.log(this.selectedFilterString)
                     this.filterButtons.forEach((button) => {
-                        if (button.id == this.selectedFilter) { 
+                        if (button.id == this.selectedFilterString) { 
                             button.classList.add("selected-item") // Adiciona a classe "selected-item" ao botão do filtro selecionado
                         }
                     })
                 }
             }
 
+            // Filtra os posts de acordo com o filtro selecionado
             filterPosts(filter) {
-                if (this.selectedFilter == filter.id) { // Se o filtro clicado já estiver selecionado
-                    this.selectedFilter = undefined // Remove o filtro selecionado
+                if (this.selectedFilterString == filter.id) { // Se o filtro clicado já estiver selecionado
+                    this.selectedFilterString = undefined // Remove o filtro selecionado
+                    
                     this.updateSelectedFilter() // Limpa o estilo de seleção do botão do filtro
+                    this.updateGif() // Atualiza o GIF do tênis
                     this.postsInjector(this.shuffledPosts) // Injeta todos os posts
                 }
                 else {
-                    this.selectedFilter = filter.id
+                    this.selectedFilterString = filter.id
 
                     // Filtra os posts
                     let filteredPostsArray = [];
@@ -151,6 +154,7 @@ fetch("foam-runner-data.json")
                     })
                     
                     this.updateSelectedFilter() // Adiciona estilo de seleção no botão clicado
+                    this.updateGif() // Atualiza o GIF do tênis
                     this.postsInjector(filteredPostsArray) // Injeta os posts filtrados
                 }
             }
