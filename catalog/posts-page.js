@@ -1,9 +1,12 @@
-fetch("foam-runner-data.json")
+const modelName = document.querySelector("#nav-model-title h1").id;
+
+fetch(`${modelName}-data.json`)
     .then(response => response.json())
     .then(data => {
         class Feed {
             constructor(data) {
                 this.data = data;
+                this.modelNameString = document.querySelector("#nav-model-title h1").id;
                 this.selectedFilterString = undefined;
                 this.shuffledPosts = this.shuffle(data);
                 this.postAmount = data.length;
@@ -107,10 +110,10 @@ fetch("foam-runner-data.json")
             updateGif() {
                 if (this.colorwayIDs.includes(this.selectedFilterString)) {
                     this.gifElement.removeAttribute("src")
-                    this.gifElement.setAttribute("src", `../gifs/yeezy-foam-runner-${this.selectedFilterString}.gif`)
+                    this.gifElement.setAttribute("src", `../gifs/${this.modelNameString}/yeezy-${this.modelNameString}-${this.selectedFilterString}.gif`)
                 } else {
                     this.gifElement.removeAttribute("src")
-                    this.gifElement.setAttribute("src", `../gifs/all-foam-runner.gif`)
+                    this.gifElement.setAttribute("src", `../gifs/${this.modelNameString}/all.gif`)
                 }
             }
 
@@ -163,7 +166,7 @@ fetch("foam-runner-data.json")
         // Inicia a classe Feed
         const feed = new Feed(data)
 
-        // Event listeners
+        // Event listeners dos botões de filtro
         const filterButton = document.querySelectorAll('[data-filter]');
         filterButton.forEach(selectedFilter => {
             selectedFilter.addEventListener('click', () => {
