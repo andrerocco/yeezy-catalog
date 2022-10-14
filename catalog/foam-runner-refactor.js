@@ -9,18 +9,27 @@ fetch("foam-runner-data.json")
                 this.postAmount = data.length;
                 this.gifElement = document.querySelector("#bottom-gif img")
                 
-                this.colorways = [] // Lista das collorways em string
-                document.querySelectorAll('[data-filter]').forEach((colorway) => {this.colorways.push(colorway.id)});
+                this.filterButtons = document.querySelectorAll('[data-filter]');
+                this.colorwayIDs = [] // Lista das collorways em string
+                document.querySelectorAll('[data-filter]').forEach((colorway) => {this.colorwayIDs.push(colorway.id)});
                 
                 this.postsInjector(this.shuffledPosts) // Inicialmente a pagina carrega com a função postsLoader recebendo a array "data" que contém todos os posts
             }
 
             // Injeta cada post da lista de posts passada como parâmetro
             postsInjector(posts) {
-                const postSection = document.querySelector("#container #posts") // Seleciona o container onde os posts serão injetados
-                
-                while (parent.firstChild) {parent.firstChild.remove()} // Limpa a lista de posts atual
+                if (posts.length == 0) { // Se a lista de posts estiver vazia
+                    document.querySelector("#container").style.display = "none"; // Esconde o container de posts
+                    document.querySelector("#no-outfits").style.display = "inherit"; // Mostra a mensagem de "nenhum post encontrado"
+                } else { 
+                    document.querySelector("#no-outfits").style.display = "none"; // Esconde a mensagem de "nenhum post encontrado"
+                    document.querySelector("#container").style.display = "inherit"; // Mostra o container de posts
+                }
 
+                const postSection = document.querySelector("#container #posts") // Seleciona o container onde os posts serão injetados
+                while (postSection.firstChild) {postSection.firstChild.remove()} // Limpa a lista de posts atual
+
+                // Injeta cada post da lista de posts recebida
                 for (let i = 0; i < posts.length; i++) {
                     var post = posts[i];
 
@@ -95,7 +104,7 @@ fetch("foam-runner-data.json")
             }
 
             updateGif(colorway = undefined) {
-                if (this.colorways.includes(colorway)) {
+                if (this.colorwayIDs.includes(colorway)) {
                     this.gif.removeAttribute("src")
                     this.gif.setAttribute("src", `../gifs/yeezy-foam-runner-${colorway}.gif`)
                 } else {
@@ -104,21 +113,45 @@ fetch("foam-runner-data.json")
                 }
             }
 
+            // Filtra os posts de acordo com o filtro selecionado
+            // Se não receber nenhum argumento, irá limpar o estilo do filtro clicado
+            updateSelectedFilter(clear = true) {
+                if (clear) { // Limpa todos os filtros
+                    this.filterButtons.forEach((button) => {
+                        console.log(button)
+                        button.classList.remove("selected-item")
+                    })
+                }
+
+                if (this.selectedFilter != undefined) { // Se algum filtro estiver selecionado
+                    console.log(this.selectedFilter)
+                    this.filterButtons.forEach((button) => {
+                        if (button.id == this.selectedFilter) { 
+                            button.classList.add("selected-item") // Adiciona a classe "selected-item" ao botão do filtro selecionado
+                        }
+                    })
+                }
+            }
+
             filterPosts(filter) {
-                if (this.selectedFilter == undefined) { // Se nenhum filtro estiver selecionado
-                    // Filtra os posts baseado no filtro
+                if (this.selectedFilter == filter.id) { // Se o filtro clicado já estiver selecionado
+                    this.selectedFilter = undefined // Remove o filtro selecionado
+                    this.updateSelectedFilter() // Limpa o estilo de seleção do botão do filtro
+                    this.postsInjector(this.shuffledPosts) // Injeta todos os posts
+                }
+                else {
+                    this.selectedFilter = filter.id
+
+                    // Filtra os posts
                     let filteredPostsArray = [];
                     this.shuffledPosts.forEach(post => {
-                        if (post["colorway"] == filter) {
+                        if (post["colorway"] == filter.id) {
                             filteredPostsArray.push(post)
                         }
                     })
-                    //
-                    this.postsInjector(filteredPostsArray)
-                } 
-                // Se ainda não estiver selecionado
-                else if (this.colorways.includes(this.selectedFilter)) { 
-                    this.postsInjector(this.shuffledPosts) // Injeta todos os posts
+                    
+                    this.updateSelectedFilter() // Adiciona estilo de seleção no botão clicado
+                    this.postsInjector(filteredPostsArray) // Injeta os posts filtrados
                 }
             }
         }
@@ -130,7 +163,7 @@ fetch("foam-runner-data.json")
         const filterButton = document.querySelectorAll('[data-filter]');
         filterButton.forEach(selectedFilter => {
             selectedFilter.addEventListener('click', () => {
-                feed.filterPosts(selectedFilter.id)
+                feed.filterPosts(selectedFilter)
             })
         })
 
