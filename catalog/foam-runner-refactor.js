@@ -19,6 +19,8 @@ fetch("foam-runner-data.json")
             postsInjector(posts) {
                 const postSection = document.querySelector("#container #posts") // Seleciona o container onde os posts serão injetados
                 
+                while (parent.firstChild) {parent.firstChild.remove()} // Limpa a lista de posts atual
+
                 for (let i = 0; i < posts.length; i++) {
                     var post = posts[i];
 
@@ -103,11 +105,7 @@ fetch("foam-runner-data.json")
             }
 
             filterPosts(filter) {
-                if (this.selectedFilter = undefined) { // Se já estiver selecionado
-                    this.postsInjector(this.shuffledPosts) // Injeta todos os posts
-                } 
-                // Se ainda não estiver selecionado
-                else { 
+                if (this.selectedFilter == undefined) { // Se nenhum filtro estiver selecionado
                     // Filtra os posts baseado no filtro
                     let filteredPostsArray = [];
                     this.shuffledPosts.forEach(post => {
@@ -115,8 +113,12 @@ fetch("foam-runner-data.json")
                             filteredPostsArray.push(post)
                         }
                     })
-
+                    //
                     this.postsInjector(filteredPostsArray)
+                } 
+                // Se ainda não estiver selecionado
+                else if (this.colorways.includes(this.selectedFilter)) { 
+                    this.postsInjector(this.shuffledPosts) // Injeta todos os posts
                 }
             }
         }
